@@ -1,0 +1,34 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+.star-label {
+  font-size: 1.5rem;  /* Tamaño de la estrella */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.favorite-checkbox:checked + .star-label i {
+  color: rgb(237, 223, 142);  /* Cambia a dorado cuando está marcado */
+  content: "\f586"; /* Cambia el icono a estrella rellena */
+}
+
+.star-label:hover {
+  color: rgb(237, 223, 142);
+}
+
+/* Nueva clase para el color de fondo de la tarjeta cuando es favorita */
+.bg-warning {
+  background-color: rgb(237, 223, 142) !important; /* Cambia este color al que desees */
+}

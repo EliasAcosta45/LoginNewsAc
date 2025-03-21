@@ -1,0 +1,13 @@
+<!-- src/app/auth/recover.component.html -->
+<div>
+  <h2>Recuperar Contraseña</h2>
+  <div *ngIf="!isCodeSent">
+    <input type="email" [(ngModel)]="email" placeholder="Ingresa tu correo" required />
+    <button (click)="sendRecoveryCode()">Enviar Código</button>
+  </div>
+  <div *ngIf="isCodeSent">
+    <input type="text" [(ngModel)]="code" placeholder="Ingresa el token" required />
+    <input type="password" [(ngModel)]="newPassword" placeholder="Nueva Contraseña" required />
+    <button (click)="resetPassword()">Restablecer Contraseña</button>
+  </div>
+</div>

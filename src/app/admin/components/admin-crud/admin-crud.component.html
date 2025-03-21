@@ -1,0 +1,78 @@
+<div class="container mt-5">
+    <div class="row">
+      <!-- Sección de visualización -->
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Lista de Usuarios</h5>
+  
+            <!-- Buscador -->
+            <div class="mb-3">
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Buscar usuario..." 
+                [(ngModel)]="searchQuery" 
+                (input)="searchUsers()">
+            </div>
+  
+            <!-- Lista de Usuarios -->
+            <ul class="list-group">
+              <li *ngFor="let user of filteredUsers" class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <strong>{{ user.UserName }}</strong><br>
+                  <small>Rol: {{ user.Role }}</small>
+                </div>
+  
+                <!-- Botones de editar y borrar -->
+                <div>
+                  <button 
+                    class="btn btn-primary btn-sm me-2" 
+                    (click)="editUser(user)">
+                    <i class="bi bi-pencil"></i> Editar
+                  </button>
+                  <button 
+                    class="btn btn-danger btn-sm" 
+                    (click)="deleteUser(user.IdUser)">
+                    <i class="bi bi-trash"></i> Eliminar
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Sección de edición (aparece solo si se selecciona un usuario) -->
+      <div *ngIf="selectedUser" class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Editar Usuario</h5>
+
+            <div class="mb-3">
+              <label for="updatedName" class="form-label">Nuevo Nombre</label>
+              <input 
+                type="text" 
+                id="updatedName" 
+                class="form-control" 
+                [(ngModel)]="updatedName">
+            </div>
+  
+            <div class="mb-3">
+              <label for="updatedRole" class="form-label">Nuevo Rol</label>
+              <input 
+                type="text" 
+                id="updatedRole" 
+                class="form-control" 
+                [(ngModel)]="updatedRole">
+            </div>
+  
+            <button class="btn btn-success" (click)="saveUser()">Guardar Cambios</button>
+            <button class="btn btn-secondary ms-2" (click)="selectedUser = null">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

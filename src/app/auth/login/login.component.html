@@ -1,0 +1,38 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4" style="width: 400px;">
+    <h3 class="text-center mb-3">Iniciar Sesión</h3>
+    
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo Electrónico</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Ingrese su Correo Electrónico">
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <div class="input-group">
+        <input 
+          [type]="showPassword ? 'text' : 'password'" 
+          class="form-control" 
+          id="password" 
+          [(ngModel)]="password" 
+          placeholder="Ingrese su contraseña">
+        <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
+          <i [ngClass]="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+        </button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary w-100" (click)="login()">Ingresar</button>
+    
+    <div class="text-center mt-3">
+      <a [routerLink]="['/recover']">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <!-- Botón para redirigir a la página de registro -->
+    <div class="text-center mt-3">
+      <button class="btn btn-secondary w-100" (click)="register()">
+        No tengo cuenta, registrarme
+      </button>
+    </div>
+  </div>
+</div>

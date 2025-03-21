@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <!-- Noticias -->
+  <div class="row">
+    <div *ngFor="let news of newsletters" class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden" [ngClass]="{'bg-warning': isFavorite(news)}">
+        <div class="card-header bg-primary text-white text-center">
+          <h5 class="card-title m-0">{{ news.Newtitle }}</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ news.NewDescription }}</p>
+        </div>
+        <div class="card-footer text-muted d-flex justify-content-between">
+          <small>{{ news.NewFoot }}</small>
+          
+          <!-- Botón de favoritos solo para usuarios (no admins) -->
+          <button *ngIf="role === 1 && !isFavorite(news)" class="btn btn-outline-warning p-1" (click)="toggleFavorite(news)">
+            <i class="bi bi-star"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-left gap-3 my-4">
+    <button *ngIf="role === 2" class="btn btn-danger" (click)="goToUsers()">
+      <i class="bi bi-people-fill"></i> Gestión de Usuarios
+    </button>
+
+    <button *ngIf="role === 1" class="btn btn-primary" (click)="goToFavorites()">
+      <i class="bi bi-star-fill"></i> Ver Favoritos
+    </button>
+  </div>
+</div>
