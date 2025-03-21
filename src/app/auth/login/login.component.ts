@@ -48,6 +48,7 @@ export class LoginComponent {
       },
       error: (error) => {
         console.error('Error en la API:', error);
+        alert('Error al iniciar sesión: ' + error);
       }
     });
   }
